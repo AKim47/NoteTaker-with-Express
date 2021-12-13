@@ -4,7 +4,7 @@ const app = express();
 
 const path = require('path');
 
-//const { notes } = require('./db/db.json');
+const notes = require('./Develop/db/db.json');
 
 app.listen(3001, () => {
     console.log(`API server now on port 3001!`);
@@ -26,12 +26,12 @@ app.get('/notes', (req, res) => {
 // read db.json and return all saved notes as JSON
 
 app.get('/api/notes', (req, res) => {
-
+    res.json(notes);
 });
 
 // save new note to db.json, and return new note to client
 app.post('/api/notes', (req, res) => {
-
+    
 });
 
 // DELETE /api/notes/:id
