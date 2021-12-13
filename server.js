@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: true}));
 // parse incoming JSON data
 app.use(express.json());
 
+// use JS and CSS
+app.use(express.static('public'));
+
 // return index.html
 //remember to remove Develop
 
