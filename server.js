@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const path = require('path');
 
-const notes = require('./Develop/db/db.json');
+const notes = require('./db/db.json');
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
@@ -24,13 +24,13 @@ app.use(express.json());
 //remember to remove Develop
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Develop/public/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // return notes.html
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 
 // read db.json and return all saved notes as JSON
@@ -43,7 +43,7 @@ function newNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
     fs.writeFileSync(
-        path.join(__dirname, './Develop/db/db.json'),
+        path.join(__dirname, './db/db.json'),
         JSON.stringify({ notes: notesArray}, null, 2)
     );
     return body;
